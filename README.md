@@ -5,9 +5,9 @@ Clone disk or partition from Grub with Clonezilla
 Easily clone your partition or disk for backup.   
 
 1. Plug an external usb disk (exFat formated) 
-2. Reboot, your computer boots a linux Clonezilla iso
+2. Reboot
 3. Choose a predefined backup config 
-4. Wait and let the things done
+4. Wait and see ..  your computer boots a linux Clonezilla iso and backup is automatic done
 
 If you want to restore, boot the Clonezilla live entry and follow instructions to restore.
 
