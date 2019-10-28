@@ -13,7 +13,8 @@ If you want to restore, boot the Clonezilla live entry and follow instructions t
 
 ## Installation
 Boot your standard linux 
-Download Clonezilla iso, copy to /isos  :
+
+Download Clonezilla iso (https://clonezilla.org/), copy to /isos  :
 
 ```
 wget https://osdn.net/projects/clonezilla/downloads/71563/clonezilla-live-2.6.3-7-amd64.iso
