@@ -28,7 +28,7 @@ you just have to set the target usb disk, the target path, and the source partit
 ```
 git clone https://github.com/phcollignon/clonebackup.git
 cd clonebackup
-sudo cp 40_custom -rf /etc/grub.d/40_custom 
+sudo cp 40_custom /etc/grub.d/40_custom 
 sudo vi /etc/grub.d/40_custom
 ``` 
 
