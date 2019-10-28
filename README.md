@@ -1,5 +1,5 @@
 # clonebackup
-Clone disk or partition to image files with Grub and Clonezilla
+Clone disks or partitions to image files with Grub and Clonezilla
 
 ## Usage :
 Easily clone your partition or disk to an image file for backup.   
