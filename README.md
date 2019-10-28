@@ -7,11 +7,11 @@ Easily clone your partition or disk to an image file for backup.
 1. Plug an external usb disk (exFat formated) 
 2. Reboot
 3. Choose a predefined backup config 
-4. Wait and see ..  your computer boots a linux Clonezilla iso and backup is automatic done to image files
+4. Wait and see ..  your computer boots a linux Clonezilla iso and backup is automatically done to image files
 
 If you want to restore, boot the Clonezilla live entry and follow instructions to restore.
 
-## Installation
+## Installation :
 Boot your standard linux 
 
 Download Clonezilla iso (https://clonezilla.org/), copy to /isos  :
