@@ -1,0 +1,39 @@
+#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+
+insmod loopback
+insmod iso9660
+insmod ntfs
+
+set isofile="/isos/clonezilla-live-2.6.3-7-amd64.iso"
+
+menuentry "Clonezilla live - Backup & Restore " {
+	loopback loop $isofile
+	linux (loop)/live/vmlinuz boot=live union=overlay username=user config components quiet noswap nolocales edd=on nomodeset ocs_live_run=\"ocs-live-general\" ocs_live_extra_param=\"\" keyboard-layouts= ocs_live_batch=\"no\" locales= vga=788 ip=frommedia nosplash toram=filesystem.squashfs findiso=$isofile
+	initrd (loop)/live/initrd.img
+} 
+
+
+
+menuentry "Backup Linux partition" {
+	set backup_target=/dev/sdb1
+	set backup_target_path=backup_laptop_linux
+	set backup_source=nvme0n1p1
+        loopback loop $isofile
+	linux (loop)/live/vmlinuz boot=live live-config noswap nolocales edd=on nomodeset keyboard-layouts=\"\" locales=\"\" vga=788 ip=frommedia nosplash toram=filesystem.squashfs  ocs_prerun=\"mount $backup_target /mnt \" ocs_prerun1=\"mkdir -p /mnt/$backup_target_path/$backup_source \" ocs_prerun2=\"mount --bind /mnt/$backup_target_path/$backup_source /home/partimag/\" ocs_live_run=\"ocs-sr -q2 --batch  -j2 -z1p -sc -p reboot saveparts autoname $backup_source \" ocs_live_extra_param=\"\" ocs_live_batch=\"yes\" findiso=$isofile
+        initrd (loop)/live/initrd.img
+}
+
+menuentry "Backup Windows disk" {
+	set backup_target=/dev/sdb1
+	set backup_target_path=backup_laptop_windows_disk
+	set backup_source=sda
+        loopback loop $isofile
+	linux (loop)/live/vmlinuz boot=live live-config noswap nolocales edd=on nomodeset keyboard-layouts=\"\" locales=\"\" vga=788 ip=frommedia nosplash toram=filesystem.squashfs  ocs_prerun=\"mount $backup_target /mnt \" ocs_prerun1=\"mkdir -p /mnt/$backup_target_path/$backup_source \" ocs_prerun2=\"mount --bind /mnt/$backup_target_path/$backup_source /home/partimag/\" ocs_live_run=\"ocs-sr -q2 --batch  -j2 -z1p -sc -p reboot savedisk autoname $backup_source \" ocs_live_extra_param=\"\" ocs_live_batch=\"yes\" findiso=$isofile
+        initrd (loop)/live/initrd.img
+}
+
+
